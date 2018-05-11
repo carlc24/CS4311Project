@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class AIMove {
     Random ranNumber = new Random();
-    void EasyMove(GameAttribute gameatt){
+    int[] EasyMove(GameAttribute gameatt){
         int randomNumberRow = ranNumber.nextInt(gameatt.getSize());
         int randomNumberCol = ranNumber.nextInt(gameatt.getSize());
         if(gameatt.HasNextMove() ){
@@ -24,5 +24,6 @@ public class AIMove {
             // player_2 is AI
             gameatt.setAttInfo(randomNumberRow, randomNumberCol, 1);
         }
+        return new int[] {randomNumberRow,randomNumberCol};
     }
 }
