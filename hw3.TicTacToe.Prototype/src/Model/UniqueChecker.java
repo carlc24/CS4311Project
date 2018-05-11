@@ -17,6 +17,8 @@ import Control.GameAttribute;
  * @author verastu
  */
 public class UniqueChecker {
+	
+	//Iterating rows
     boolean SameValues(RowIterator it, String user){
         while(it.hasNext()){
             if(!it.next().equals(user))
@@ -24,6 +26,7 @@ public class UniqueChecker {
         }
         return true;
     }
+    //Iterating Columns
     boolean SameValues(ColIterator it, String user){
         while(it.hasNext()){
             if(!it.next().equals(user))
@@ -31,6 +34,7 @@ public class UniqueChecker {
         }
         return true;
     }
+    // Iterating right Diagonals
     boolean SameValues(RDemIterator it, String user){
         while(it.hasNext()){
             if(!it.next().equals(user))
@@ -38,6 +42,8 @@ public class UniqueChecker {
         }
         return true;
     }
+    
+    // Iterating left Diagonals
     boolean SameValues(LDemIterator it, String user){
         while(it.hasNext()){
             if(!it.next().equals(user))
@@ -45,6 +51,8 @@ public class UniqueChecker {
         }
         return true;
     }
+    
+    //Checking for matches, uses the iterators to iterate and checks to see if someone has 3 in a row.
     public boolean Checkwinner(GameAttribute gameAtt, String user){
         AttributeIterator attIter = new AttributeIterator(gameAtt);
         for(int i = 0; i<(gameAtt.getSize()); i++){

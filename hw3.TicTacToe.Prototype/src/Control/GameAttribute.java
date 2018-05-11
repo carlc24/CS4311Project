@@ -21,6 +21,7 @@ public class GameAttribute {
     int stepCounter;
     int currPlayer;
     
+
     public void initAttInfo(String _player1, String _player2, String _defDesc, int _size){
         gameAttInfo = new ArrayList<>();
         player = new String[]{_player1,_player2};
@@ -35,6 +36,7 @@ public class GameAttribute {
             }
         }
     }
+    // setter and getter functions for various players and attribute of the board
     public void setAttInfo(int _row, int _col, int _player){
         stepCounter++;
         gameAttInfo.get(_row).set(_col, player[_player]);
@@ -48,7 +50,7 @@ public class GameAttribute {
     public String getPlayer(int _player){
         return player[_player];
     }
-    public String getDefualtDesc(){
+    public String getDefaultDesc(){
         return defDesc;
     }
     public int getSize(){
@@ -66,6 +68,7 @@ public class GameAttribute {
         }
         return currPlayer;
     }
+
     public boolean HasNextMove(){
         return stepCounter<(size*size);
     }
