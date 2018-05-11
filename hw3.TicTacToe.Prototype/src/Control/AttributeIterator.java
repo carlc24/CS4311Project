@@ -39,7 +39,7 @@ public class AttributeIterator {
 
         @Override
         public boolean hasNext() {
-            return count < (gameAtt.getSize()/3);
+            return count < (gameAtt.getSize());
         }
 
         @Override
@@ -57,7 +57,7 @@ public class AttributeIterator {
 
         @Override
         public boolean hasNext() {
-            return count < (gameAtt.getSize()/3);
+            return count < (gameAtt.getSize());
         }
 
         @Override
@@ -75,7 +75,7 @@ public class AttributeIterator {
 
         @Override
         public boolean hasNext() {
-            return count < (gameAtt.getSize()/3);
+            return count < (gameAtt.getSize());
         }
         @Override
         public String next() {
@@ -91,7 +91,7 @@ public class AttributeIterator {
 
         @Override
         public boolean hasNext() {
-            return count < (gameAtt.getSize()/3);
+            return count < (gameAtt.getSize());
         }
         @Override
         public String next() {

@@ -45,9 +45,9 @@ public class UniqueChecker {
         }
         return true;
     }
-    boolean Checkwinner(GameAttribute gameAtt, String user){
+    public boolean Checkwinner(GameAttribute gameAtt, String user){
         AttributeIterator attIter = new AttributeIterator(gameAtt);
-        for(int i = 0; i<(gameAtt.getSize()/3); i++){
+        for(int i = 0; i<(gameAtt.getSize()); i++){
             if(SameValues(attIter.getRowIterator(i),user))
                 return true;
             if(SameValues(attIter.getColIterator(i),user))
