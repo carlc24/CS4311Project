@@ -96,10 +96,7 @@ public class InGameButton {
                         for(int _col = 0; _col<gameAtt.getSize();_col++){
                             if(btns.get(_row).get(_col).equals(newbtn)){
                                 gameAtt.setAttInfo(_row, _col, gameAtt.getCurrPlayer());         // setting the value of the player move  (more detailed in the PvP button, very similar)                     
-                                newbtn.setText(gameAtt.getPlayer(gameAtt.getCurrPlayer()));		// setting the text value of the player move (more detailed in the PvP button, very similar)
-                                
                                 aimove.EasyMove(gameAtt);										// Calls the AI move (more detailed in the PvP button, very similar)
-                                newbtn.setText(gameAtt.getPlayer(gameAtt.getCurrPlayer()));		// sets the AI move (more detailed in the PvP button, very similar)
                                 updateAllButton();												// calls the updateAllButton function to update all buttons and show the AI move
                                 
                             }
