@@ -54,7 +54,7 @@ public class InGameButton {
                         for(int _col = 0; _col<gameAtt.getSize();_col++){
                             if(btns.get(_row).get(_col).equals(newbtn)){
                                 gameAtt.setAttInfo(_row, _col, gameAtt.getCurrPlayer());		// sets the value of the button which will help us check for winner
-                                newbtn.setText(gameAtt.getPlayer(gameAtt.getCurrPlayer()));		// sets the "text" of the button to the value of the player (0 = X 1 = O)
+                                updateButton(_row,_col);                                        // sets the "text" of the button to the value of the player (0 = X 1 = O)
                                 gameAtt.NextPlayer();											// swaps player 0 to player 1 (way of taking turns)
                             }
                         }
@@ -71,13 +71,15 @@ public class InGameButton {
             // Winner message, displays either if player 1 wins or player 0 wins or if it is a tie
             if(cker.Checkwinner(gameAtt, gameAtt.getPlayer(0))){
                 new Alert(Alert.AlertType.INFORMATION, gameAtt.getPlayer(0) + " is winner").showAndWait();
+                gameAtt.setCurrPlayer(-1);
             }
             else if(cker.Checkwinner(gameAtt, gameAtt.getPlayer(1))){
                 new Alert(Alert.AlertType.INFORMATION, gameAtt.getPlayer(1) + " is winner").showAndWait();
+                gameAtt.setCurrPlayer(-1);
             }
             if(!gameAtt.HasNextMove()){
-                gameAtt.setCurrPlayer(-1);
                 new Alert(Alert.AlertType.INFORMATION, "Tie").showAndWait();
+                gameAtt.setCurrPlayer(-1);
             }
         });
     }        
@@ -91,14 +93,16 @@ public class InGameButton {
         newbtn.setOnAction((ActionEvent event) -> {
             if(gameAtt.getCurrPlayer() == 0){
                 // Checks to see if button is empty and moves with player if button is not empty
-                if(newbtn.getText().equals(gameAtt.getDefaultDesc())){
+                if(newbtn.getText().equals(gameAtt.getDefualtDesc())){
                     for(int _row = 0; _row<gameAtt.getSize();_row++){
                         for(int _col = 0; _col<gameAtt.getSize();_col++){
                             if(btns.get(_row).get(_col).equals(newbtn)){
-                                gameAtt.setAttInfo(_row, _col, gameAtt.getCurrPlayer());         // setting the value of the player move  (more detailed in the PvP button, very similar)                     
-                                aimove.EasyMove(gameAtt);										// Calls the AI move (more detailed in the PvP button, very similar)
-                                updateAllButton();												// calls the updateAllButton function to update all buttons and show the AI move
-                                
+                                // setting the value of the player move
+                                gameAtt.setAttInfo(_row, _col, gameAtt.getCurrPlayer());
+                                // Calls the AI move and set the values
+                                aimove.EasyMove(gameAtt);
+                                // Update the text of buttons
+                                updateAllButoon();
                             }
                         }
                     }
@@ -106,21 +110,22 @@ public class InGameButton {
                 else{
                     return;
                 }
-            }            
-            
-            // Winner message, displays either if player 1 wins or player 0 wins or if it is a tie
+            }
             else if (gameAtt.getCurrPlayer() == -1){
                 return;
             }
+            // Check whether it has a winner or die, and set the currentPlayer to 1 (Gameover)
             if(cker.Checkwinner(gameAtt, gameAtt.getPlayer(0))){
                 new Alert(Alert.AlertType.INFORMATION, gameAtt.getPlayer(0) + " is winner").showAndWait();
+                gameAtt.setCurrPlayer(-1);
             }
             else if(cker.Checkwinner(gameAtt, gameAtt.getPlayer(1))){
                 new Alert(Alert.AlertType.INFORMATION, gameAtt.getPlayer(1) + " is winner").showAndWait();
+                gameAtt.setCurrPlayer(-1);
             }
             if(!gameAtt.HasNextMove()){
-                gameAtt.setCurrPlayer(-1);
                 new Alert(Alert.AlertType.INFORMATION, "Tie").showAndWait();
+                gameAtt.setCurrPlayer(-1);
             }
         });
     }
