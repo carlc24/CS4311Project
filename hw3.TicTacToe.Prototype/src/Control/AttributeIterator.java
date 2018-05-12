@@ -1,22 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * AttributeIterator class support the iterating of cells' inforamtion
+ * @author It is created and modifed by Jia Shin Tseng & Carl Chung
+ * Last modified in May 11, 2018
  */
 
 package Control;
-
 import java.util.Iterator;
-
-/**
- *
- * @author verastu
- */
 public class AttributeIterator {
+    // objects
     GameAttribute gameAtt;
+    
+    /** Function: AttributeIterator
+     * @Comment: constructor
+     * @Pre: _gameAtt must be predefined
+     * @Post: n/a
+     */
     public AttributeIterator(GameAttribute _gameAtt){
         gameAtt = _gameAtt;
     }
+    
+    /** Function: Getter
+     * @Comment: return designed iterator for iterating
+     * @Pre: n/a
+     * @Post: n/a
+     */
     public RowIterator getRowIterator(int _row){
         return new RowIterator(_row);
     }
@@ -29,6 +36,12 @@ public class AttributeIterator {
     public LDemIterator getLDemIterator(){
         return new LDemIterator();
     }
+    
+    /** Function: Iterator classes' implementation
+     * @Comment: Iterators
+     * @Pre: n/a
+     * @Post: n/a
+     */
     public class RowIterator implements Iterator<String>{
         private int count;
         private int row;
